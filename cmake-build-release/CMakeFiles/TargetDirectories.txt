@@ -1,0 +1,3 @@
+C:/Users/Dima/CLionProjects/untitled122/cmake-build-release/CMakeFiles/untitled122.dir
+C:/Users/Dima/CLionProjects/untitled122/cmake-build-release/CMakeFiles/ALL_BUILD.dir
+C:/Users/Dima/CLionProjects/untitled122/cmake-build-release/CMakeFiles/ZERO_CHECK.dir
