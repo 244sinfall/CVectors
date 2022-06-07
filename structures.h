@@ -5,7 +5,7 @@ typedef struct coordinate {
 
 typedef struct vector {
     struct vector *previous;
-    struct coordinate start;
-    struct coordinate end;
+    Coordinate start;
+    Coordinate end;
     struct vector *next;
 } Vector;

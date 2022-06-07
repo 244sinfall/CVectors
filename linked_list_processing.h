@@ -1,9 +1,10 @@
-//#include "vector_processing.h"
+
 //
 //Vector AddVector(Vector *firstVector);
 #include <stdlib.h>
 #include <stdio.h>
-#include "structures.h"
+
+
 Vector* InverseLinkedList(Vector* firstVector, int isFirst);
 void AddVector(Vector *firstVector, int *isFirst);
 void PrintAllVectors(Vector* firstVector);

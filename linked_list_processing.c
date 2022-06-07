@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <conio.h>
+#include "structures.h"
 #include "vector_processing.h"
 
 
@@ -19,7 +19,7 @@ Vector* LoadFile() {
         while(feof(savedVectors) == 0) {
             int success;
             if(isFirst == 1) {
-                success = fscanf_s(savedVectors, "(%f, %f) (%f, %f)\n",&returnVector->start.x,
+                success = fscanf(savedVectors, "(%f, %f) (%f, %f)\n",&returnVector->start.x,
                          &returnVector->start.y, &returnVector->end.x, &returnVector->end.y);
                 returnVector->next = NULL;
                 returnVector->previous = NULL;
@@ -31,7 +31,7 @@ Vector* LoadFile() {
             }
             else {
                 Vector *newVector = (Vector*) malloc(sizeof(Vector));
-                success = fscanf_s(savedVectors, "(%f, %f) (%f, %f)\n",&newVector->start.x,
+                success = fscanf(savedVectors, "(%f, %f) (%f, %f)\n",&newVector->start.x,
                          &newVector->start.y, &newVector->end.x, &newVector->end.y);
                 if(success < 4) {
                     free(newVector);
@@ -77,12 +77,6 @@ void PrintAllVectors(Vector* firstVector) {
 
 
     while(selectedVector != NULL) {
-        if(selectedVector->previous != NULL) {
-            printf("DEBUG LINE: Previous exist! ");
-        }
-        if(selectedVector->next != NULL) {
-            printf("DEBUG LINE: Next exist! ");
-        }
         printf("%d: Vector start point: (%f, %f). End point: (%f, %f).\n", counter,selectedVector->start.x, selectedVector->start.y, selectedVector->end.x, selectedVector->end.y);
         if(selectedVector->next == NULL) {
             break;
@@ -114,7 +108,7 @@ Vector* SelectVector(Vector* firstVector) {
     Vector* selectedVector = firstVector;
     PrintAllVectors(firstVector);
     printf("Select Vector:\n");
-    scanf_s("%d", &selected);
+    scanf("%d", &selected);
     for(int i = 0; i<selected; i++) {
         selectedVector = selectedVector->next;
         if(selectedVector == NULL) {
@@ -139,7 +133,7 @@ Vector* RemoveVector(Vector* firstVector, int *isFirst) {
         vectorToDelete->next->previous = vectorToDelete->previous;
     }
     else if (vectorToDelete->previous == NULL && vectorToDelete->next == NULL) {
-        realloc(firstVector, sizeof (Vector));
+        firstVector = realloc(firstVector, sizeof (Vector));
         *isFirst = 1;
         return firstVector;
     }
@@ -158,7 +152,7 @@ void AddVector(Vector* firstVector, int *isFirst) {
     if (*isFirst == 1) {// first
         //firstVector = (Vector*) malloc(sizeof(Vector));
         GenerateNewVector(firstVector);
-        printf_s("New vector added successfully.\n");
+        printf("New vector added successfully.\n");
         firstVector->next = NULL;
         firstVector->previous = NULL;
         *isFirst = 0;
@@ -173,7 +167,7 @@ void AddVector(Vector* firstVector, int *isFirst) {
         lastVector->next = newVector;
         newVector->previous = lastVector;
         newVector->next = NULL;
-        printf_s("New vector added successfully.\n");
+        printf("New vector added successfully.\n");
     }
 }
 

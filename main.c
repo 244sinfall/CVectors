@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "structures.h"
+#include "vector_processing.h"
 #include "linked_list_processing.h"
 
 
@@ -19,15 +21,15 @@ int main() {
 //    firstVector->next = NULL;
 //    firstVector->previous = NULL;
     while(programState) {
-        printf_s("Welcome to the vector calculator!\n");
-        printf_s("Please select the action:\n");
-        printf_s("1. Current vectors menu\n");
-        printf_s("2. Add vector\n");
-        printf_s("3. Remove vector\n");
-        printf_s("4. Inverse vectors' list\n");
-        printf_s("0. Quit\n");
+        printf("Welcome to the vector calculator!\n");
+        printf("Please select the action:\n");
+        printf("1. Current vectors menu\n");
+        printf("2. Add vector\n");
+        printf("3. Remove vector\n");
+        printf("4. Inverse vectors' list\n");
+        printf("0. Quit\n");
         int selection;
-        scanf_s("%d", &selection);
+        scanf("%d", &selection);
         switch (selection) {
             case 0:
                 programState = 0;
@@ -55,3 +57,4 @@ int main() {
     }
     return 0;
 }
+

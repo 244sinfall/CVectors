@@ -1,4 +1,3 @@
-#include "linked_list_processing.h"
 
 Coordinate GetVectorCoordinates(struct vector vectorToCount);
 Coordinate FindOXVector(Vector vectorToCount);

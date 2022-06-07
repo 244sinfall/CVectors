@@ -1,16 +1,17 @@
-#include "linked_list_processing.h"
 #include <math.h>
 #include <stdio.h>
+#include "structures.h"
+#include "linked_list_processing.h"
 
 void GenerateNewVector(Vector* newVector) {
-    printf_s("Enter X coordinate of vector's START point:");
-    scanf_s("%f", &newVector->start.x);
-    printf_s("Enter Y coordinate of vector's START point:");
-    scanf_s("%f", &newVector->start.y);
-    printf_s("Enter X coordinate of vector's END point:");
-    scanf_s("%f", &newVector->end.x);
-    printf_s("Enter Y coordinate of vector's END point:");
-    scanf_s("%f", &newVector->end.y);
+    printf("Enter X coordinate of vector's START point:");
+    scanf("%f", &newVector->start.x);
+    printf("Enter Y coordinate of vector's START point:");
+    scanf("%f", &newVector->start.y);
+    printf("Enter X coordinate of vector's END point:");
+    scanf("%f", &newVector->end.x);
+    printf("Enter Y coordinate of vector's END point:");
+    scanf("%f", &newVector->end.y);
 }
 
 Coordinate GetVectorCoordinates(Vector vectorToCount) {
@@ -49,14 +50,16 @@ float GetVectorAngleToOX(Vector vectorToCount) {
 
 void VectorMenu(Vector* firstVector) {
     while(1) {
-        printf_s("Please select the action:\n");
-        printf_s("1. Print vectors'.\n");
-        printf_s("2. Count vector length and OX angle.\n");
-        printf_s("3. Sort by...\n");
-        printf_s("4. Filter by...\n");
-        printf_s("0. To main menu\n");
+
+        printf("Please select the action:\n");
+        printf("1. Print vectors'.\n");
+        printf("2. Count vector length and OX angle.\n");
+        printf("3. Sort by...\n");
+        printf("4. Filter by...\n");
+        printf("0. To main menu\n");
         int selection;
-        scanf_s("%d", &selection);
+        Vector* vectorToCount;
+        scanf("%d", &selection);
         switch (selection) {
             case 0:
                 return;
@@ -64,7 +67,7 @@ void VectorMenu(Vector* firstVector) {
                 PrintAllVectors(firstVector);
                 break;
             case 2:
-                Vector* vectorToCount = SelectVector(firstVector);
+                vectorToCount = SelectVector(firstVector);
                 if(vectorToCount == NULL) {
                     printf("Incorrect vector number.\n");
                     break;
